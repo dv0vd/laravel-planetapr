@@ -55,9 +55,9 @@
                     <li class="nav-item">
                         <a class="nav-link text-light" href="/#aboutus" id='aboutLink'>О нас</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link text-light" href="/news">Новости</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link text-light" href="/tours">Туры</a>
                     </li>
