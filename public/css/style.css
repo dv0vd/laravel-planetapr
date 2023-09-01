@@ -55,7 +55,7 @@
 }
 
 #mainImage {
-    background-image: url("/img/main-beach.webp");
+    background-image: url("/img/index/main-beach.webp");
 }
 
 .mainHeading {
@@ -124,7 +124,7 @@
     }
 
     #mainImage {
-        background-image: url("/img/main-beach-2048.webp");
+        background-image: url("/img/index/main-beach-2048.webp");
     }
 }
 
@@ -142,7 +142,7 @@
     }
 
     #mainImage {
-        background-image: url("/img/main-beach-1920.webp");
+        background-image: url("/img/index/main-beach-1920.webp");
     }
 }
 
@@ -160,7 +160,7 @@
     }
 
     #mainImage {
-        background-image: url("/img/main-beach-1600.webp");
+        background-image: url("/img/index/main-beach-1600.webp");
     }
 }
 
@@ -178,7 +178,7 @@
     }
 
     #mainImage {
-        background-image: url("/img/main-beach-1440.webp");
+        background-image: url("/img/index/main-beach-1440.webp");
     }
 }
 
@@ -220,7 +220,7 @@
     }
 
     #mainImage {
-        background-image: url("/img/main-beach-1080.webp");
+        background-image: url("/img/index/main-beach-1080.webp");
     }
 }
 
@@ -266,7 +266,7 @@
     }
 
     #mainImage {
-        background-image: url("/img/main-beach-720.webp");
+        background-image: url("/img/index/main-beach-720.webp");
     }
 }
 
@@ -328,7 +328,7 @@
     }
 
     #mainImage {
-        background-image: url("/img/main-beach-480.webp");
+        background-image: url("/img/index/main-beach-480.webp");
     }
 }
 
@@ -386,6 +386,6 @@
     }
 
     #mainImage {
-        background-image: url("/img/main-beach-360.webp");
+        background-image: url("/img/index/main-beach-360.webp");
     }
 }
