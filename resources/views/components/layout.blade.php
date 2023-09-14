@@ -3,7 +3,8 @@
 
 <head>
     <meta charset='utf-8'>
-    <meta name="keywords" content="туристическое агентство, авиабилеты, туры, жд билеты, автобусные билеты, авиакасса, жд касса, бронирование жилья, бронирование отелей, пассажирские перевозки, планета путешествий развлечений, турагентство">
+    <meta name="keywords"
+        content="туристическое агентство, авиабилеты, туры, жд билеты, автобусные билеты, авиакасса, жд касса, бронирование жилья, бронирование отелей, пассажирские перевозки, планета путешествий развлечений, турагентство">
     <meta name="yandex-verification" content="82c12996534abb30">
     <meta name="google-site-verification" content="K5GbYdWVM0wxWxhwXzcRwnFjJSDfrYjqe-8bocWJP4A">
     <meta name="msvalidate.01" content="D189239F6433AA8859184F28E0DA229F">
@@ -20,7 +21,8 @@
                 (m[i].a = m[i].a || []).push(arguments)
             };
             m[i].l = 1 * new Date();
-            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(
+                k, a)
         })
         (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
@@ -32,7 +34,8 @@
         });
     </script>
     <noscript>
-        <div><img src="https://mc.yandex.ru/watch/72995719" style="position:absolute; left:-9999px;" alt="" /></div>
+        <div><img src="https://mc.yandex.ru/watch/72995719" style="position:absolute; left:-9999px;" alt="" />
+        </div>
     </noscript>
     <!-- /Yandex.Metrika counter -->
 </head>
@@ -42,9 +45,12 @@
         <nav class="navbar navbar-expand-lg">
             <a class="navbar-brand" href="/">
                 <img alt="Логотип" src="{{ asset('img/logo.webp') }}" width=50 height=50>
-                <span class='text-uppercase font-weight-bold text-light' id='brand'>Планета путешествий и развлечений</span>
+                <span class='text-uppercase font-weight-bold text-light' id='brand'>Планета путешествий и
+                    развлечений</span>
             </a>
-            <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
@@ -55,9 +61,9 @@
                     <li class="nav-item">
                         <a class="nav-link text-light" href="/#aboutus" id='aboutLink'>О нас</a>
                     </li>
-                    <!-- <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link text-light" href="/news">Новости</a>
-                    </li> -->
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link text-light" href="/tours">Туры</a>
                     </li>
@@ -94,7 +100,7 @@
             </div>
         </div>
     </footer>
-    
+
     <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
