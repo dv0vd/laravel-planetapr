@@ -18,6 +18,8 @@ use App\Http\Controllers\IndexController;
 Route::controller(IndexController::class)->group(function () {
     Route::get('', 'index');
     Route::get('news', 'news')->name('news');
+    Route::get('contacts', 'contacts')->name('contacts');
+    Route::post('contacts', 'askQuestion')->name('contacts.ask');
 });
 
 Route::view(
