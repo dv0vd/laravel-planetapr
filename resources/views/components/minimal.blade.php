@@ -1,6 +1,6 @@
 <x-layout>
-    <x-slot:title>Страница не найдена | Турагентство Белгород | Планета путешествий и развлечений</x-slot>
-    <x-slot:description>Страница не найдена | Турагентство Белгород | Планета путешествий и развлечений</x-slot>
+    <x-slot:title>{{ $title }}</x-slot>
+    <x-slot:description>{{ $description }}</x-slot>
 
    <div class="container">
         <div class="row text-center align-middle">
