@@ -9,7 +9,9 @@
 
     <div class="container">
         <div class="row">
-            <h1 class='text-uppercase text-light font-weight-bold text-center'>Контакты</h1>
+            <div class="col-lg">
+                <h1 class='text-uppercase text-light font-weight-bold text-center'>Контакты</h1>
+            </div>
             <div class="container mt-3 text-light">
                 <div class="row text-center d-flex align-items-center">
                     <div class="col-lg">
