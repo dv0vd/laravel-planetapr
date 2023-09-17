@@ -25,7 +25,7 @@ class IndexController extends Controller
     {
         $validated = $request->validated();
 
-        Mail::to('dvo@davy.monster')->send(new AskQuestion($validated));
+        Mail::send(new AskQuestion($validated));
 
         return redirect()->back()->with('message', 'Спасибо! Мы постараемся ответить как можно скорее!');
     }

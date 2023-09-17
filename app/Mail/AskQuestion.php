@@ -30,7 +30,8 @@ class AskQuestion extends Mailable implements ShouldQueue
     {
         return new Envelope(
             subject: 'Вопрос с сайта',
-            replyTo: $this->data['email']
+            replyTo: $this->data['email'],
+            to: config('mail.to'),
         );
     }
 
