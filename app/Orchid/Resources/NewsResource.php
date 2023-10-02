@@ -6,29 +6,19 @@ namespace App\Orchid\Resources;
 
 use App\Models\News;
 use App\Models\NewsImage;
-use App\Orchid\Filters\DateFilter;
-use App\Orchid\Filters\DescriptionFilter;
-use App\Orchid\Filters\PublicationDateFilter;
-use App\Orchid\Filters\PublicationPeriodFilter;
-use App\Orchid\Filters\TitleFilter;
-use App\View\Components\Admin\AttachmentsComponent;
-use Exception;
-use Illuminate\Database\Eloquent\Builder;
+use App\Orchid\Filters\NewsResource\ActiveFilter;
+use App\Orchid\Filters\NewsResource\DescriptionFilter;
+use App\Orchid\Filters\NewsResource\PublicationPeriodFilter;
+use App\Orchid\Filters\NewsResource\TitleFilter;
+use App\View\Components\Admin\NewsResource\NewsImagesComponent;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
-use Orchid\Attachment\Models\Attachment;
-use Orchid\Attachment\Models\Attachmentable;
 use Orchid\Crud\Resource;
-use Orchid\Crud\ResourceRequest;
 use Orchid\Screen\Components\Cells\DateTimeSplit;
-use Orchid\Screen\Fields\Cropper;
 use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Fields\Quill;
-use Orchid\Screen\Fields\Relation;
-use Orchid\Screen\Fields\Upload;
+use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Sight;
 use Orchid\Screen\TD;
 
@@ -38,6 +28,11 @@ class NewsResource extends Resource
      * @var string
      */
     public static $model = News::class;
+
+    public static function sort(): string
+    {
+        return '1';
+    }
 
     public static function icon(): string
     {
@@ -64,6 +59,13 @@ class NewsResource extends Resource
                 ->sort()
                 ->alignCenter()
             ,
+            TD::make('active', 'Активность')
+                ->sort()
+                ->alignCenter()
+                ->render(function ($news) {
+                    return $news->active ? 'Активна' : 'Неактивна';
+                })
+            ,
             TD::make('date', 'Отображаемая дата публикации')
                 ->sort()
                 ->alignCenter()
@@ -72,7 +74,6 @@ class NewsResource extends Resource
                 ->sort()
                 ->alignCenter()
                 ->usingComponent(DateTimeSplit::class)
-
             ,
             TD::make('updated_at', 'Дата обновления')
                 ->sort()
@@ -88,6 +89,14 @@ class NewsResource extends Resource
             Input::make('title')
                 ->title('Название')
             ,
+            Select::make('active')
+                ->title('Активность')
+                ->options([
+                    1 => 'Активна',
+                    0 => 'Неактивна',
+                ])
+                ->value(0)
+            ,
             Quill::make('description')
                 ->title('Описание')
                 ->toolbar(['text', 'color', 'quote', 'header', 'list', 'format'])
@@ -97,53 +106,6 @@ class NewsResource extends Resource
                 ->format('Y-m-d')
                 ->allowInput()
                 ->placeholder('Выберите дату')
-            ,
-            // Relation::make('test')
-            //     ->title('Фото')
-            //     ->fromModel(News::class, 'images')
-            // ,
-            // Upload::make('attachments')
-            //     ->title('Изображения')
-            //     ->acceptedFiles('image/*')
-            //     ->path('./')
-            //     ->storage('news')
-            //     // ->media()
-            // ,
-            // Cropper::make('Изображения')
-            // ,
-            // Relation::make('images')
-            //     ->fromModel(NewsImage::class, 'news_id')
-            //     ->multiple()
-            //     // ->displayAppend('full')
-            //     ->searchColumns('image')
-            //     ->title('Изображения')
-            // ,
-        ];
-    }
-
-    /**
-     * @return Sight[]
-     */
-    public function legend(): array
-    {
-        return [
-            Sight::make('title', 'Название')
-            ,
-            Sight::make('description', 'Описание')
-            ,
-            Sight::make('date', 'Отображаемая дата публикации')
-            ,
-            Sight::make('created_at', 'Дата создания')
-                ->usingComponent(DateTimeSplit::class)
-            ,
-            Sight::make('updated_at', 'Дата обновления')
-                ->usingComponent(DateTimeSplit::class)
-            ,
-            // Sight::make('atachments', 'Изображения')
-            //     ->component(AttachmentsComponent::class)
-            // ,
-            Sight::make('images', 'Изображения')
-                ->component(AttachmentsComponent::class)
             ,
         ];
     }
@@ -155,8 +117,38 @@ class NewsResource extends Resource
     {
         return [
             TitleFilter::class,
+            ActiveFilter::class,
             DescriptionFilter::class,
             PublicationPeriodFilter::class,
+        ];
+    }
+
+    /**
+     * @return Sight[]
+     */
+    public function legend(): array
+    {
+        return [
+            Sight::make('title', 'Название')
+            ,
+            Sight::make('active', 'Активность')
+                ->render(function ($news) {
+                    return $news->active ? 'Активна' : 'Неактивна';
+                })
+            ,
+            Sight::make('description', 'Описание')
+            ,
+            Sight::make('date', 'Отображаемая дата публикации')
+            ,
+            Sight::make('created_at', 'Дата создания')
+                ->usingComponent(DateTimeSplit::class)
+            ,
+            Sight::make('updated_at', 'Дата обновления')
+                ->usingComponent(DateTimeSplit::class)
+            ,
+            Sight::make('images', 'Изображения')
+                ->component(NewsImagesComponent::class)
+            ,
         ];
     }
 
@@ -166,91 +158,23 @@ class NewsResource extends Resource
     public function messages(): array
     {
         return [
-            'title.required' => 'Название обязательно для заполнения',
-            'title.max' => 'Название не может быть больше :max символов',
+            'date.required' => 'Дата обязательна для заполнения',
 
             'description.required' => 'Описание обязательно для заполнения',
 
-            'date.required' => 'Дата обязательна для заполнения',
+            'title.max' => 'Название не может быть больше :max символов',
+            'title.required' => 'Название обязательно для заполнения',
         ];
     }
 
-    // public function onDelete(ResourceRequest $request, Model $model)
-    // {
+    public function onDelete(Model $model)
+    {
+        DB::transaction(function () use ($model) {
+            NewsImage::where('news_id', $model->id)->delete();
 
-    // }
-
-
-    // public function onSave(ResourceRequest $request, Model $model)
-    // {
-    //     // DB::transaction(function () use ($model, $request) {
-    //         $model->forceFill($request->except('attachments'))->save();
-    //         $news = News::where($request->except('attachments'))->first();
-
-    //         $attachments = [];
-    //         if (!empty($request->get('attachments'))) {
-    //             foreach ($request->get('attachments') as $attachmentId) {
-    //                 $attachments[] = Attachment::find($attachmentId);
-    //             }
-    //         }
-    //         $images = [];
-    //         $attachmentable = [];
-    //     $i = 0;
-    //         foreach ($attachments as $attachment) {
-    //         \Log::infO($i);
-    //             // foreach ($attachments as $attachment) {
-    //             $images[] = [
-    //                 'news_id' => $news->id,
-    //                 'image' => "$attachment->name.$attachment->extension",
-    //                 'sort' => $i,
-    //             ];
-
-    //             $attachmentable[] = [
-    //                 'attachmentable_type' => NewsImage::class,
-    //                 'attachmentable_id' => $news->id,
-    //                 // 'attachment_id' => 
-    //             ];
-    //         $i++;
-    //         }
-
-    //         NewsImage::upsert(
-    //             $images,
-    //             ['news_id', 'image'],
-    //             ['image', 'sort']
-    //         );
-
-    //         $newsImages = NewsImage::where('news_id', $news->id)->get();
-    //         $attachments = [];
-    //         foreach ($newsImages as $newsImage) {
-    //             $temp = explode('.', $newsImage->image);
-    //             $name = $temp[0];
-    //             $extension = $temp[1];
-
-    //             $attachmentsIds[] = Attachment::select(['id'])->where('name', $name)->where('extension', $extension)->first();
-    //         }
-    //     // \Log::info(`---------`, ['newsImages' => $newsImages, 'attch_ids' => $attachmentsIds]);
-    //         // dd($newsImages, $attachmentsIds);
-    //         for ($i = 0; $i < count($attachmentsIds); $i++) {
-    //             $attachmentable[$i]['attachment_id'] = $attachmentsIds[$i]['id'];
-    //         }
-    //         // dd($attachmentable);
-    //         Attachmentable::upsert(
-    //             $attachmentable,
-    //             ['attachmentable_type', 'attachmentable_id'],
-    //             ['attachment_id']
-    //         );
-    //         // // foreach ($attachmentable as $item) {
-    //         // //     $item['attachment_id'] = $news
-    //         // // }
-    //         // $attachments = Attachment
-
-
-
-
-
-    //     // }, 3);
-
-    // }
+            $model->delete();
+        });
+    }
 
     /**
      * @return string[]
@@ -258,27 +182,9 @@ class NewsResource extends Resource
     public function rules(Model $model): array
     {
         return [
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
             'date' => 'required|date',
-            // 'images' => 'sometimes',
+            'description' => 'required|string',
+            'title' => 'required|string|max:255',
         ];
     }
-
-    // public function modelQuery(ResourceRequest $request, Model $model): Builder
-    // {
-    //     // dd($model->query()->with('images'));
-    //     // return $model->load('attachments');
-    //     // dd($model->query()->toSql());
-    //     // $model['attachments'] = Attachment::all();
-    //     // return $model->query();
-
-    // }
-
-    // public function with(): array
-    // {
-    //     return [
-    //         'attachments',
-    //     ];
-    // }
 }
