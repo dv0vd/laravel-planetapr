@@ -16,7 +16,7 @@
     @foreach ($images as $image)
         <div class="row text-center">
             <div class="col-lg">
-                <img loading="lazy" alt="{{ $title }}" src="{{ \Storage::disk('news')->url($image->image) }}" class="img-fluid mb-3">
+                <img loading="lazy" alt="{{ $title }}" src="{{ \Storage::disk('news')->url($image->image) }}" class="img-fluid w-75 mb-3">
             </div>
         </div>
     @endforeach
