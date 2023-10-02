@@ -21,6 +21,7 @@ class News extends Model
      */
     protected $allowedSorts = [
         'title',
+        'date',
         'description',
         'active',
         'title',
