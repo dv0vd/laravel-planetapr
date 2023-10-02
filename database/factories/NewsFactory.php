@@ -22,6 +22,7 @@ class NewsFactory extends Factory
             'title' => fake()->word(),
             'description' => fake()->text(),
             'date' => fake()->date(),
+            'active' => fake()->boolean()
         ];
     }
 }

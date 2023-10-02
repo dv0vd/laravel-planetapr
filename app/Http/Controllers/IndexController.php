@@ -42,7 +42,10 @@ class IndexController extends Controller
     {
         $description = 'Бронирование туров, жилья, отелей, заказ авиа, ж/д и автобусных билетов, организация пассажирских перевозок. С нетерпением ждём Вас!';
         $title = 'Турагентство Белгород | Планета путешествий и развлечений';
-        $news = News::with('images')->orderByDesc('date')->limit($this->newsIndexPageCount)->get();
+
+        // TODO replace with latest
+        // todo scopes
+        $news = News::where('active', true)->with('images')->orderByDesc('date')->limit($this->newsIndexPageCount)->get();
 
         return view('index', compact('title', 'description', 'news'));
     }
@@ -52,6 +55,7 @@ class IndexController extends Controller
         $title = 'Новости | Турагентство Белгород | Планета путешествий и развлечений';
         $description = 'Свежие новости туристической индустрии в России и мире, горящие туры и путёвки!';
 
+        // TODO replace with latest
         $news = News::with('images')->orderByDesc('date')->paginate($this->newsNewsPagePagination);
 
         return view('news', compact('title', 'description', 'news'));

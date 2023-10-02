@@ -9,14 +9,14 @@
     </div>
     <div class="row">
         <div class="col-lg text-ligh text-justify">
-            {{ $description }}
+            {!! $description !!}
         </div>
     </div>
 
     @foreach ($images as $image)
         <div class="row text-center">
             <div class="col-lg">
-                <img loading="lazy" alt="{{ $title }}" src="{{ asset('storage/' . $image->image) }}" class="img-fluid mb-3">
+                <img loading="lazy" alt="{{ $title }}" src="{{ \Storage::disk('news')->url($image->image) }}" class="img-fluid mb-3">
             </div>
         </div>
     @endforeach
