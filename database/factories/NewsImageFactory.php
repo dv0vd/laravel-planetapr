@@ -28,9 +28,15 @@ class NewsImageFactory extends Factory
         $this->images = $this->storage->files('news/test');
         $news = News::all();
 
+        $imageNumber = rand(0, count($this->images) - 1);
+        $image = last(explode('/', $this->images[$imageNumber]));
+        // $imagePath = \Storage::disk('news')->url('test/' . $image);
         return [
             'news_id' => $news[rand(0, count($news) - 1)]->id,
-            'image' => $this->images[rand(0, count($this->images) - 1)],
+            // 'path' => $imagePath,
+            'sort' => fake()->randomNumber(),
+            'image' => "test/$image",
+            
         ];
     }
 }
