@@ -56,6 +56,16 @@ return [
             'throw' => false,
         ],
 
+
+
+        'news' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/news'),
+            'url' => env('APP_URL').'/storage/news',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
     ],
 
     /*
