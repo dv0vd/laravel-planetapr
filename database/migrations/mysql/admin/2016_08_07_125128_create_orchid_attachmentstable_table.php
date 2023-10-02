@@ -42,6 +42,8 @@ return new class extends Migration
                 ->on('attachments')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+
+            $table->unique(['attachmentable_type', 'attachmentable_id', 'attachment_id'], 'attachmentable_unique');
         });
     }
 
