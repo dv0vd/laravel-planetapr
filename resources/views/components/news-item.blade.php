@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg text-ligh text-justify">
+        <div class="col-lg text-ligh text-justify news-desc">
             {!! $description !!}
         </div>
     </div>
