@@ -3,6 +3,11 @@
     margin: auto;
 }
 
+.news-desc a {
+    color: white;
+    text-decoration: underline;
+}
+
 .smallFont {
     font-size: small;
 }
