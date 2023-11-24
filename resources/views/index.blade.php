@@ -34,7 +34,7 @@
                     <li>работа с юридическим лицами</li>
                     <li>работа без депозита и посредников</li>
                     <li>более <span class='font-weight-bold text-warning'>1000</span> довольных клиентов!</li>
-                    <li>более <span class='font-weight-bold text-warning'>15</span> лет на рынке туристических услуг -
+                    <li>более <span class='font-weight-bold text-warning'>20</span> лет на рынке туристических услуг -
                         работаем с 2002 года!</li>
                 </ul>
                 <div class='text-light text-justify'>
