@@ -15,19 +15,30 @@
             <div class="container mt-3 text-light">
                 <div class="row text-center d-flex align-items-center">
                     <div class="col-lg">
-                        <img loading="lazy" src="/img/contacts/phone.webp" alt="Телефон турагентства"
-                            class='contactLogo mb-2'>
+                        <a href="tel:+79205739381"><img loading="lazy" src="/img/contacts/phone.webp" alt="Телефон турагентства"
+                            class="contactLogo mb-2 socials"></a>
                         <p class='contactText'><a class='text-white' href="tel:+79205739381">+7 (920) 573-93-81</a></p>
+                        <a href="tel:+79205614686"><img loading="lazy" src="/img/contacts/phone.webp" alt="Телефон турагентства"
+                            class="contactLogo mb-2 socials"></a>
+                        <a href="https://t.me/planet_journeys"><img loading="lazy" src="/img/contacts/telegram.png" alt="Telegram турагентства"
+                            class="contactLogo mb-2 socials"></a>
+                        <a href="https://api.whatsapp.com/send?phone=79205614686"><img loading="lazy" src="/img/contacts/whatsapp.png" alt="WhatsApp турагентства"
+                            class="contactLogo mb-2 socials"></a>
+                        <a href="viber://chat?number=79205614686"><img loading="lazy" src="/img/contacts/viber.png" alt="Viber турагентства"
+                            class="contactLogo mb-2 socials"></a>
                         <p class='contactText'><a class='text-white' href="tel:+79205614686">+7 (920) 561-46-86</a></p>
-                        <img loading="lazy" src="/img/contacts/email.webp" alt="Электронная почта турагентства"
-                            class='contactLogo mb-2'>
+                        <a href="mailto:planetapr@mail.ru"><img loading="lazy" src="/img/contacts/email.webp" alt="Электронная почта турагентства"
+                            class="contactLogo mb-2 socials"></a>
                         <p class='contactText'><a class='text-white'
                                 href="mailto:planetapr@mail.ru">planetapr@mail.ru</a></p>
                         <a rel='nofollow' target='_blank' href='https://vk.com/planeta_travel_bgd' class='socials'><img
-                                loading="lazy" src="/img/contacts/vk.webp" alt="Vkontakte" class='contactLogo mb-2'></a>
+                                loading="lazy" src="/img/contacts/vk.webp" alt="ВК турагентства" class="contactLogo mb-2 socials"></a>
                         <a rel='nofollow' target='_blank' href='https://www.instagram.com/planeta.travel.bgd/'
-                            class='socials'><img loading="lazy" src="/img/contacts/instagram.webp" alt="Instagram"
-                                class='contactLogo mb-2'></a>
+                            class='socials'><img loading="lazy" src="/img/contacts/instagram.webp" alt="Instagram турагентства"
+                                class="contactLogo mb-2 socials"></a>
+                        <a rel='nofollow' target='_blank' href='https://ok.ru/profile/605327965712'
+                            class='socials'><img loading="lazy" src="/img/contacts/ok.png" alt="Одноклассники турагентства"
+                                class="contactLogo mb-2 socials"></a>
                     </div>
                     <div class="col-lg">
                         <p class='contactText'>г. Белгород ул. Гостёнская 14 офис 7</p>
