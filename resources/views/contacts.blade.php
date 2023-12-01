@@ -22,9 +22,9 @@
                             class="contactLogo mb-2 socials"></a>
                         <a href="https://t.me/planet_journeys"><img loading="lazy" src="/img/contacts/telegram.png" alt="Telegram турагентства"
                             class="contactLogo mb-2 socials"></a>
-                        <a href="https://api.whatsapp.com/send?phone=79205614686"><img loading="lazy" src="/img/contacts/whatsapp.png" alt="WhatsApp турагентства"
+                        <a href="https://wa.me/79205614686"><img loading="lazy" src="/img/contacts/whatsapp.png" alt="WhatsApp турагентства"
                             class="contactLogo mb-2 socials"></a>
-                        <a href="viber://chat?number=79205614686"><img loading="lazy" src="/img/contacts/viber.png" alt="Viber турагентства"
+                        <a href="https://viber.click/79205614686"><img loading="lazy" src="/img/contacts/viber.png" alt="Viber турагентства"
                             class="contactLogo mb-2 socials"></a>
                         <p class='contactText'><a class='text-white' href="tel:+79205614686">+7 (920) 561-46-86</a></p>
                         <a href="mailto:planetapr@mail.ru"><img loading="lazy" src="/img/contacts/email.webp" alt="Электронная почта турагентства"
