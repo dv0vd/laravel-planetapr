@@ -10,20 +10,21 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('news_images', function (Blueprint $table) {
+        Schema::create('tours', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('news_id')->constrained()->cascadeOnUpdate()->restrictOnDelete();
+            $table->string('title');
+            $table->text('description');
             $table->string('image');
-            $table->bigInteger('sort')->default(0);
+            $table->boolean('is_abroad')->default(false);
+            $table->boolean('active')->default(false);
+            $table->date('date')->useCurrent();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
-
-            $table->unique(['news_id', 'image']);
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('news_images');
+        Schema::dropIfExists('tours');
     }
 };
