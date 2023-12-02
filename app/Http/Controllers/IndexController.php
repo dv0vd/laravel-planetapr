@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AskQuestionRequest;
 use App\Mail\AskQuestion;
 use App\Models\News;
+use App\Models\Tour;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Mail;
 
@@ -15,8 +16,8 @@ class IndexController extends Controller
     private readonly int $newsIndexPageCount;
     private readonly int $newsNewsPagePagination;
 
-    public function __construct(
-    ) {
+    public function __construct()
+    {
         $this->newsIndexPageCount = config('news.index_page_count');
         $this->newsNewsPagePagination = config('news.news_page_pagination_count');
     }
@@ -56,8 +57,20 @@ class IndexController extends Controller
         $description = 'Свежие новости туристической индустрии в России и мире, горящие туры и путёвки!';
 
         // TODO replace with latest
-        $news = News::with('images')->orderByDesc('date')->paginate($this->newsNewsPagePagination);
+        $news = News::with('images')->where('active', true)->orderByDesc('date')->paginate($this->newsNewsPagePagination);
 
         return view('news', compact('title', 'description', 'news'));
+    }
+
+    public function tours(): View
+    {
+        $title = 'Горящие туры и путёвки | Турагентство Белгород | Планета путешествий и развлечений';
+        $description = 'Забронировать туры по всем популярным направлёниям, лучшие предложения и низкие цены. С нетерпением ждём Вас!';
+
+        $tours = Tour::where('active', true)->orderByDesc('date')->get();
+        $russianTours = $tours->where('is_abroad', false);
+        $abroadTours = $tours->where('is_abroad', true);
+
+        return view('tours', compact('title', 'description', 'russianTours', 'abroadTours'));
     }
 }

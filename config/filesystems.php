@@ -65,6 +65,13 @@ return [
             // 'visibility' => 'public',
             'throw' => false,
         ],
+        'tours' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/tours'),
+            'url' => env('APP_URL').'/storage/tours',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
 
     ],
 

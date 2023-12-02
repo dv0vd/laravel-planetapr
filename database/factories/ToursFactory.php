@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use App\Models\News;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Storage;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\NewsImage>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\News>
  */
-class NewsImageFactory extends Factory
+class ToursFactory extends Factory
 {
     private array $images;
     private Filesystem $storage;
@@ -25,17 +24,18 @@ class NewsImageFactory extends Factory
     public function definition(): array
     {
         $this->storage = Storage::disk('public');
-        $this->images = $this->storage->files('news/test');
-        $news = News::all();
+        $this->images = $this->storage->files('tours/test');
 
         $imageNumber = rand(0, count($this->images) - 1);
         $image = last(explode('/', $this->images[$imageNumber]));
 
         return [
-            'news_id' => $news[rand(0, count($news) - 1)]->id,
-            'sort' => fake()->randomNumber(),
+            'title' => fake()->word(),
+            'description' => fake()->text(),
+            'date' => fake()->date(),
+            'active' => fake()->boolean(),
+            'is_abroad' => rand(0, 1),
             'image' => "test/$image",
-
         ];
     }
 }
