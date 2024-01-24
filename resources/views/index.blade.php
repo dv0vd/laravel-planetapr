@@ -7,8 +7,7 @@
         <div class="container">
             <div class="row align-items-center" id='backgroundIndex'>
                 <div class="col-lg">
-                    <h1 class='mainHeading text-center text-black font-italic font-weight-bold'>ПЛАНЕТА ПУТЕШЕСТВИЙ И
-                        РАЗВЛЕЧЕНИЙ</h1>
+                    <h1 class='mainHeading text-center text-black font-italic font-weight-bold'>{{ $h1 }}</h1>
                     <h2 class='mainHeading text-left text-black font-italic font-weight-bold'>СКАЖИ <span
                             class='text-danger'>"ДА"</span></h1>
                         <h2 class='mainHeading text-right text-black font-italic font-weight-bold'>НОВЫМ ПРИКЛЮЧЕНИЯМ!
