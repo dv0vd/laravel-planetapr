@@ -7,7 +7,7 @@
         {{ $description }}
     </x-slot>
 
-    <h1 id='transportHead' class='text-uppercase text-light font-weight-bold text-center'>Пассажирские перевозки</h1>
+    <h1 id='transportHead' class='text-uppercase text-light font-weight-bold text-center'>{{ $h1 }}</h1>
     <div class="container mt-3 text-light">
         <div class="row text-justify">
             <div class="col-lg">
@@ -35,7 +35,7 @@
                 Мы предлагаем выгодные условия и безопасное вождение.
             </p>
             <!-- <p>Наши контактные данные находятся на<u><a class="nav-link text-light d-inline" href="/contact">этой</a></u>странице.</p> -->
-                
+
             </div>
             <div class="col-lg">
             <div id="transportCarausel" class="carousel slide" data-ride="carousel align-self-center">

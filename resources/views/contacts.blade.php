@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg">
-                <h1 class='text-uppercase text-light font-weight-bold text-center'>Контакты</h1>
+                <h1 class='text-uppercase text-light font-weight-bold text-center'>{{ $h1 }}</h1>
             </div>
             <div class="container mt-3 text-light">
                 <div class="row text-center d-flex align-items-center">
@@ -110,7 +110,7 @@
                                 </p>
                                 <p>
                                     <input required type="email" id="contactFormEmail" name="email"
-                                        class="form-control text-light bg-secondary" value="{{ old('email') }}">    
+                                        class="form-control text-light bg-secondary" value="{{ old('email') }}">
                                 </p>
                                 <p>
                                     <label for="contactFormName" class='form-label'>Имя</label>

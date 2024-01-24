@@ -33,22 +33,23 @@ class IndexController extends Controller
 
     public function contacts(): View
     {
-        $title = 'Контакты, адрес, режим работы | Турагентство Белгород | Планета путешествий и развлечений';
+        $title = ' Контакты, адрес, режим работы | Турагентство Белгород';
         $description = 'Телефоны: +7(920)573-93-81, +7(920)561-46-86. Email: planetapr.su. Адрес: г. Белгород ул. Гостёнская 14 офис 7. Режим работы: Пн-Пт 10.00 - 18.00, перерыв 13.30 - 14.00.';
+        $h1 = 'Контакты';
 
-        return view('contacts', compact('title', 'description'));
+        return view('contacts', compact('title', 'description', 'h1'));
     }
 
     public function index(): View
     {
         $description = 'Бронирование туров, жилья, отелей, заказ авиа, ж/д и автобусных билетов, организация пассажирских перевозок. С нетерпением ждём Вас!';
         $title = 'Турагентство Белгород | Планета путешествий и развлечений';
-
+        $h1 = 'ТУРЫ ПО РОССИИ';
         // TODO replace with latest
         // todo scopes
         $news = News::where('active', true)->with('images')->orderByDesc('date')->limit($this->newsIndexPageCount)->get();
 
-        return view('index', compact('title', 'description', 'news'));
+        return view('index', compact('title', 'description', 'news', 'h1'));
     }
 
     public function news(): View
@@ -64,13 +65,14 @@ class IndexController extends Controller
 
     public function tours(): View
     {
-        $title = 'Горящие туры и путёвки | Турагентство Белгород | Планета путешествий и развлечений';
+        $title = 'Горящие туры и путёвки | Турагентство Белгород';
         $description = 'Забронировать туры по всем популярным направлёниям, лучшие предложения и низкие цены. С нетерпением ждём Вас!';
+        $h1 = 'Купить тур по России';
 
         $tours = Tour::where('active', true)->orderByDesc('date')->get();
         $russianTours = $tours->where('is_abroad', false);
         $abroadTours = $tours->where('is_abroad', true);
 
-        return view('tours', compact('title', 'description', 'russianTours', 'abroadTours'));
+        return view('tours', compact('title', 'description', 'russianTours', 'abroadTours', 'h1'));
     }
 }
